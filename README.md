@@ -1,5 +1,3 @@
-
-
 | GitHub | PyPI | Documentation | Gurubase |
 | ------ | ---- | ------------- | -------- |
 | [![GitHub](https://img.shields.io/badge/GitHub-vanna-blue?logo=github)](https://github.com/vanna-ai/vanna) | [![PyPI](https://img.shields.io/pypi/v/vanna?logo=pypi)](https://pypi.org/project/vanna/) | [![Documentation](https://img.shields.io/badge/Documentation-vanna-blue?logo=read-the-docs)](https://vanna.ai/docs/) | [![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20Vanna%20Guru-006BFF)](https://gurubase.io/g/vanna) |
@@ -81,13 +79,31 @@ See the [documentation](https://vanna.ai/docs/) for specifics on your desired da
 
 If you want to get a feel for how it works after training, you can try this [Colab notebook](https://vanna.ai/docs/app/).
 
-
 ### Install
 ```bash
 pip install vanna
 ```
 
 There are a number of optional packages that can be installed so see the [documentation](https://vanna.ai/docs/) for more details.
+
+### Database Connection
+#### Snowflake (Key Pair Authentication)
+```python
+import snowflake.connector
+
+# Connect to Snowflake using key pair authentication
+conn = snowflake.connector.connect(
+    user='your_username',
+    account='your_account',
+    private_key_path='path/to/private/key.p8',
+    warehouse='your_warehouse',
+    database='your_database',
+    schema='your_schema'
+)
+
+# Use the connection with Vanna
+vn.connect(conn)
+```
 
 ### Import
 See the [documentation](https://vanna.ai/docs/) if you're customizing the LLM or vector database.
@@ -242,7 +258,7 @@ Fine-Tuning
 ## Why Vanna?
 
 1. **High accuracy on complex datasets.**
-    - Vanna’s capabilities are tied to the training data you give it
+    - Vanna's capabilities are tied to the training data you give it
     - More training data means better accuracy for large and complex datasets
 2. **Secure and private.**
     - Your database contents are never sent to the LLM or the vector database
